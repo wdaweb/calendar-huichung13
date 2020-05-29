@@ -12,11 +12,20 @@
 body{
     font-family: 'Noto Sans TC', sans-serif;
 }
+
+table th a, a:hover{
+    font-size: 3rem;
+    color: white;
+    text-decoration: none;
+}
+table td{
+    width: 14%;
+}
 </style>
 
 </head>
 
-<body>
+<body class="alert-warning">
     <?php
 
     $month = date("m");
@@ -37,7 +46,7 @@ body{
     //一個月有幾天
     $monthdays = date("t", strtotime($firstDay));
 
-    echo "<a href='index.php'>" . $year . "-" . $month . "</a>";
+    // echo "<a href='index.php'>" . $year . "-" . $month . "</a>";
     if ($month >= 12) {
         $nextm = 1;
         $nexty = $year + 1;
@@ -56,19 +65,20 @@ body{
 
 
     ?>
-    <div class="container table-responsive">
-    <table class="table table-light text-center ">
-<thead class="thead-dark">
-    <tr>
-            <th colspan='7'>
+    <div class="container">
+    <table class="table table-sm table-light text-center col-md-8">
+<thead>
+    <tr class="bg-warning">
+            <th colspan='7' class="color-light">
                
                 
-                <a href="index.php?month=<?= $prem; ?>&year=<?= $prey; ?>"><i class="fas fa-chevron-left"></i></a>
-                <span><?= date("M" , $month); ?>  <?= $year; ?></span>
-                <a href="index.php?month=<?= $nextm; ?>&year=<?= $nexty; ?>"><i class="fas fa-chevron-right"></i></a>
+                <a class="float-left px-5" href="index.php?month=<?= $prem; ?>&year=<?= $prey; ?>"><i class="fas fa-chevron-left"></i></a>
+               
+                <span><a title="back to Today" href='index.php'><?= $month , $year; ?></a></span>
+                <a class="float-right px-5" href="index.php?month=<?= $nextm; ?>&year=<?= $nexty; ?>"><i class="fas fa-chevron-right"></i></a>
 </th>
             </tr>
-            <tr>
+            <tr style="color:#ffc107;">
                 <td>SUN</td>
                 <td>MON</td>
                 <td>TUE</td>
